@@ -1,15 +1,13 @@
-import { Chip8 } from "./Chip8";
+import { Chip8 } from './Chip8';
 
 const chip8 = new Chip8();
-chip8.registers.stackPush(1);
-chip8.registers.stackPush(2);
-chip8.registers.stackPush(3);
-let result;
-result = chip8.registers.stackPop();
-console.log(result);
-result = chip8.registers.stackPop();
-console.log(result);
-result = chip8.registers.stackPop();
-console.log(result);
+async function runChip8() {
+  while (true) {
+    const hasKeydown = chip8.keyboard.hasKeydown();
+    const isKeydown = chip8.keyboard.isKeyDown(1);
+    console.log({ hasKeydown, isKeydown });
+    await chip8.sleep();
+  }
+}
 
-
+// runChip8();
